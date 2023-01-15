@@ -5,12 +5,21 @@ import "./feed.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-const Feed = () => {
+const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
+      const res = useEffect(() => {
+        const fetchPosts = async () => {
+          const res = username
+            ? todo
+            : await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
+          setPosts(res.data);
+        };
+        fetchPosts();
+      }, []);
+      await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
       setPosts(res.data);
     };
     fetchPosts();
