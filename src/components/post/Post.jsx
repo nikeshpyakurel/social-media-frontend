@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {

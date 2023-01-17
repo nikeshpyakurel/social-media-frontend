@@ -1,6 +1,9 @@
 import React from "react";
 import "./login.css";
 const Login = () => {
+  const handelClick = () => {
+    console.log("heay");
+  };
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -11,15 +14,19 @@ const Login = () => {
           </span>
         </div>
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
+          <form className="loginBox" onSubmit={handelClick}>
+            <input placeholder="Email" type="email" className="loginInput" />
+            <input
+              type="password"
+              placeholder="Password"
+              className="loginInput"
+            />
             <button className="loginButton">Log In</button>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
               Create a New Account
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
