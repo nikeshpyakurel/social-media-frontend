@@ -10,16 +10,9 @@ const Feed = ({ username }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = useEffect(() => {
-        const fetchPosts = async () => {
-          const res = username
-            ? todo
-            : await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
-          setPosts(res.data);
-        };
-        fetchPosts();
-      }, []);
-      await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
+      const res = username
+        ? await axios.get(`/posts/profile/${username}`)
+        : await axios.get("/posts/timeline/63be4288b5e6e22cc7bdb990");
       setPosts(res.data);
     };
     fetchPosts();

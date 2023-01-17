@@ -2,15 +2,12 @@ import React from "react";
 import "./share.css";
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
 const Share = () => {
+  const PE = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img
-            className="shareProfileImg"
-            src="https://www.digitalpravidhi.com/img/niku.png"
-            alt=""
-          />
+          <img className="shareProfileImg" src={PE + "/person/1.jpg"} alt="" />
           <input
             placeholder="What's in your mind Nikesh?"
             className="shareInput"

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 const Topbar = () => {
+  const PE = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="tobarContainer">
       <div className="topbarLeft">
@@ -36,8 +37,8 @@ const Topbar = () => {
           </div>
         </div>
         <img
-          src="https://www.digitalpravidhi.com/img/niku.png"
-          alt=""
+          src={PE + "/person/1.jpg"}
+          alt={PE + "/person/1.jpg"}
           className="topbarProfile"
         />
       </div>

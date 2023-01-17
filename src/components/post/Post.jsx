@@ -12,7 +12,7 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/user/${post.userId}`);
+      const res = await axios.get(`/user?userId=${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -27,7 +27,7 @@ const Post = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`/profile/${user.username}`}>
               <img
                 className="postProfileImg"
                 src={user.profilePicture || PE + `person/1.jpg`}
@@ -49,13 +49,13 @@ const Post = ({ post }) => {
           <div className="postBottomLeft">
             <img
               className="likeIcon"
-              src="assets/like.png"
+              src={PE + "/like.png"}
               onClick={likeHandler}
               alt=""
             />
             <img
               className="likeIcon"
-              src="assets/heart.png"
+              src={PE + "/heart.png"}
               onClick={likeHandler}
               alt=""
             />

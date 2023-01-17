@@ -1,47 +1,48 @@
+const PE = process.env.REACT_APP_PUBLIC_FOLDER
 export const Users = [
     {
         id: 1,
-        profilePicture: "https://www.digitalpravidhi.com/img/niku.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Nikesh Pyakurel",
     },
     {
         id: 2,
-        profilePicture: "https://www.digitalpravidhi.com/img/sulav1.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Sulav Paudel",
     },
     {
         id: 3,
-        profilePicture: "https://www.digitalpravidhi.com/img/rubin_don.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Rubin Moktan",
     },
     {
         id: 4,
-        profilePicture: "https://www.digitalpravidhi.com/img/rahul.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Rahul Khanal",
     },
     {
         id: 5,
-        profilePicture: "https://www.digitalpravidhi.com/img/bhawesh.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Bhawesh Kafle",
     },
     {
         id: 6,
-        profilePicture: "https://www.digitalpravidhi.com/img/atul-sir.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Atul Verma",
     },
     {
         id: 7,
-        profilePicture: "https://www.digitalpravidhi.com/img/nabin.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Nabin Maharjan",
     },
     {
         id: 8,
-        profilePicture: "https://www.digitalpravidhi.com/img/anush_bro_dp.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Anush Khadka",
     },
     {
         id: 9,
-        profilePicture: "https://www.digitalpravidhi.com/img/bhawana.png",
+        profilePicture: `${PE}/person/1.jpg`,
         username: "Bhawana Rijal",
     },
 ];

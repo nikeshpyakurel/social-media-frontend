@@ -3,6 +3,7 @@ import "./rightbar.css";
 import { Users } from "../../data";
 import Online from "../online/Online";
 const RightBar = ({ profile }) => {
+  const PE = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
       <>
@@ -45,7 +46,7 @@ const RightBar = ({ profile }) => {
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
             <img
-              src="assets/person/1.jpg"
+              src={PE + `person/1.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
