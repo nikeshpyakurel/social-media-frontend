@@ -4,12 +4,14 @@ import { MoreVert } from "@material-ui/icons";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
-
+  const { user: currentUser } = useContext(AuthContext);
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/user?userId=${post.userId}`);
@@ -18,7 +20,10 @@ const Post = ({ post }) => {
     fetchUser();
   }, [post.userId]);
 
-  const likeHandler = () => {
+  const likeHandler = async () => {
+    try {
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+    } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
@@ -30,7 +35,11 @@ const Post = ({ post }) => {
             <Link to={`/profile/${user.username}`}>
               <img
                 className="postProfileImg"
-                src={user.profilePicture || PE + `person/1.jpg`}
+                src={
+                  user.profilePicture
+                    ? PE + user.profilePicture
+                    : PE + `person/1.jpg`
+                }
                 alt=""
               />
             </Link>
