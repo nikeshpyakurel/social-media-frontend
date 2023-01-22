@@ -16,7 +16,9 @@
   height: 250px;
   object-fit: cover;
 }
-
+input::placeholder {
+  text-transform: lowercase;
+}
 .profileUserImg {
   width: 150px;
   height: 150px;

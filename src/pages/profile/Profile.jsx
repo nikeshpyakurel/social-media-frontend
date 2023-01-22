@@ -9,7 +9,6 @@ import { useParams } from "react-router";
 const Profile = () => {
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
-  const params = useParams();
   const username = useParams().username;
   useEffect(() => {
     const fetchUser = async () => {
@@ -28,12 +27,20 @@ const Profile = () => {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src={user.coverPicture || PE + "/post/1.jpeg"}
+                src={
+                  user.coverPicture
+                    ? PE + user.coverPicture
+                    : PE + "/post/1.jpeg"
+                }
                 alt=""
               />
               <img
                 className="profileUserImg"
-                src={user.profilePicture || PE + "/person/1.jpg"}
+                src={
+                  user.profilePicture
+                    ? PE + user.profilePicture
+                    : PE + "/person/1.jpg"
+                }
                 alt=""
               />
             </div>

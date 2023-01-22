@@ -48,7 +48,12 @@ const Post = ({ post }) => {
                 alt=""
               />
             </Link>
-            <span className="postUsername">{user.username}</span>
+            <span
+              className="postUsername"
+              style={{ textTransform: "capitalize" }}
+            >
+              {user.username}
+            </span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">

@@ -1,9 +1,25 @@
-import React from "react";
+import "./rightbar.css";
+import React, { useEffect } from "react";
 import "./rightbar.css";
 import { Users } from "../../data";
 import Online from "../online/Online";
+import axios from "axios";
+import { useState } from "react";
 const RightBar = ({ user }) => {
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [friends, setFriends] = useState([]);
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get("/user/friends/" + user._id);
+        setFriends(friendList.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    console.log(user._id);
+    getFriends();
+  }, [user._id]);
   const HomeRightbar = () => {
     return (
       <>
@@ -50,14 +66,22 @@ const RightBar = ({ user }) => {
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              src={PE + `person/1.jpg`}
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Sulav Paudel</span>
-          </div>
+          {friends.map((friend) => {
+            return (
+              <div className="rightbarFollowing" key={friend._id}>
+                <img
+                  src={
+                    friend.profilePicture
+                      ? PE + friend.profilePicture
+                      : PE + `person/1.jpg`
+                  }
+                  alt=""
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">{friend.username}</span>
+              </div>
+            );
+          })}
         </div>
       </>
     );
