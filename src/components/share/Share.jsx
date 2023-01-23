@@ -1,7 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import "./share.css";
 import { AuthContext } from "../../context/AuthContext";
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import {
+  PermMedia,
+  Label,
+  Room,
+  EmojiEmotions,
+  Cancel,
+} from "@material-ui/icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -10,6 +16,7 @@ const Share = () => {
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
   const [file, setFile] = useState(null);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -24,9 +31,7 @@ const Share = () => {
       newPost.img = fileName;
       try {
         await axios.post("/upload", data);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     }
     try {
       await axios.post("/posts", newPost);
@@ -55,6 +60,16 @@ const Share = () => {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImageContainer">
+            <img
+              className="shareImg"
+              src={URL.createObjectURL(file)}
+              alt="ShareImage"
+            />
+            <Cancel className="shareCancelling" onClick={() => setFile(null)} />
+          </div>
+        )}
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
