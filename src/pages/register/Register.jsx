@@ -21,7 +21,7 @@ const Register = () => {
         await axios.post("/auth/register", user);
         history("/login");
       } catch (err) {
-        console.log(err);
+        email.current.setCustomValidity("Email Is Already Registered");
       }
     } else {
       passwordAgain.current.setCustomValidity("Passwords don't match");
