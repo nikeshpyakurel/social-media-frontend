@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./messenger.css";
 import Topbar from "../../components/tobbar/Topbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
 import { SendRounded } from "@material-ui/icons";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 const Messenger = () => {
+  const [convertations, setConversations] = useState([]);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const res = await axios.get("/conversations/" + user._id);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversations();
+  }, [user]);
   return (
     <div>
       <Topbar />
@@ -13,6 +28,19 @@ const Messenger = () => {
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <input className="chatMenuInput" placeholder="Search for Friends" />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
+            <Conversation />
             <Conversation />
             <Conversation />
             <Conversation />
