@@ -1,8 +1,13 @@
 import "./conversation.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Conversation = () => {
+const Conversation = ({ conversation }) => {
+  const [user, setUser] = useState(null);
   const PE = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect(() => {
+    const friendId = conversation.member.find((m) => m);
+  }, []);
   return (
     <div className="conversation">
       <img
